@@ -1,0 +1,36 @@
+def divisible(n):
+    divisible = False
+    if n > 7:
+        for x in range(2,11):
+            if n % x == 0 or n == 2:
+                divisible = True
+                
+    return divisible;
+
+def primos(n):
+    
+    lista = []
+    
+    for x in range(2,n):
+        if (x % 2 != 0 or x == 2) and not divisible(x) :
+            lista.append(x)
+            
+    return lista
+    
+def primos_couple(n):
+        
+    i = 0;
+    ant = 0;
+    p = 0;
+    for x in primos(n):
+        
+        if x * ant > n:
+            p = primos(n)[i-2] * ant;
+            print(primos(n))
+            break
+        else:
+            ant = x;
+            i += 1;    
+    return p;
+
+print(primos_couple(95));
